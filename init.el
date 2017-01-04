@@ -8,7 +8,7 @@
 ;;						   ("melpa" . "https://melpa.org/packages/")
   ;;						   ("elpy" . "https://jorgenschaefer.github.io/packages/")))
   (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+                         ("melpa" . "https://elpa.emacs-china.org/melpa/")))
   )
 
 (require 'cl)
@@ -151,46 +151,46 @@
 ;;文件保存时去掉行尾的空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(require 'auto-complete-config)
-(ac-config-default)
+;;(require 'auto-complete-config)
+;;(ac-config-default)
 
-(require 'ggtags)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-              (ggtags-mode 1))))
+;; (require 'ggtags)
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+;;               (ggtags-mode 1))))
 
-(define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
-(define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
-(define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
-(define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
-(define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
-(define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
-(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+;; (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+;; (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+;; (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+;; (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+;; (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+;; (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+;; (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
-(setq
- helm-gtags-ignore-case t
- helm-gtags-auto-update t
- helm-gtags-use-input-at-cursor t
- helm-gtags-pulse-at-cursor t
- helm-gtags-prefix-key "\C-cg"
- helm-gtags-suggested-key-mapping t
- )
+;; (setq
+;;  helm-gtags-ignore-case t
+;;  helm-gtags-auto-update t
+;;  helm-gtags-use-input-at-cursor t
+;;  helm-gtags-pulse-at-cursor t
+;;  helm-gtags-prefix-key "\C-cg"
+;;  helm-gtags-suggested-key-mapping t
+;;  )
 
-(require 'helm-gtags)
-;; Enable helm-gtags-mode
-(add-hook 'dired-mode-hook 'helm-gtags-mode)
-(add-hook 'eshell-mode-hook 'helm-gtags-mode)
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'asm-mode-hook 'helm-gtags-mode)
+;; (require 'helm-gtags)
+;; ;; Enable helm-gtags-mode
+;; (add-hook 'dired-mode-hook 'helm-gtags-mode)
+;; (add-hook 'eshell-mode-hook 'helm-gtags-mode)
+;; (add-hook 'c-mode-hook 'helm-gtags-mode)
+;; (add-hook 'c++-mode-hook 'helm-gtags-mode)
+;; (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
-(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
-(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
-(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+;; (define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+;; (define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
+;; (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+;; (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+;; (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+;; (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;;(custom-set-variables
@@ -211,30 +211,30 @@
 ;;;
 ;;; Org Mode
 ;;;
-(setq load-path (cons "~/.emacs.d/org-mode/lisp" load-path))
-(setq load-path (cons "~/.emacs.d/org-mode/contrib/lisp" load-path))
+;; (setq load-path (cons "~/.emacs.d/org-mode/lisp" load-path))
+;; (setq load-path (cons "~/.emacs.d/org-mode/contrib/lisp" load-path))
 
-(require 'org-install)
-(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+;; (require 'org-install)
+;; (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
-;;
-;; Standard key bindings
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c b") 'org-iswitchb)
+;; ;;
+;; ;; Standard key bindings
+;; (global-set-key (kbd "C-c l") 'org-store-link)
+;; (global-set-key (kbd "C-c a") 'org-agenda)
+;; (global-set-key (kbd "C-c c") 'org-capture)
+;; (global-set-key (kbd "C-c b") 'org-iswitchb)
 
-(setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/.emacs.d/org/task.org" "Tasks")
-         "* TODO %?\n %i\n %a")
-        ("j" "Journal" entry (file+datetree "~/.emacs.d/org/journal.org")
-         "* %?\nEntered on %U\n %i\n %a")))
+;; (setq org-capture-templates
+;;       '(("t" "Todo" entry (file+headline "~/.emacs.d/org/task.org" "Tasks")
+;;          "* TODO %?\n %i\n %a")
+;;         ("j" "Journal" entry (file+datetree "~/.emacs.d/org/journal.org")
+;;          "* %?\nEntered on %U\n %i\n %a")))
 
-(require 'yasnippet)
-(yas/initialize)
+;; (require 'yasnippet)
+;; (yas/initialize)
 
-;; (require 'elpy)
-(elpy-enable)
+;; ;; (require 'elpy)
+;; (elpy-enable)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

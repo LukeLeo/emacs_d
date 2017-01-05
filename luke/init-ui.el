@@ -27,4 +27,8 @@
 (require 'lukefont)
 (init-lukefont)
 
+(setq show-paren-style 'parentheses)
+;;Set "filename@RuralMouse's Emacs" as title
+(setq frame-title-format "%b@Luke's Emacs")
+
 (provide 'init-ui)

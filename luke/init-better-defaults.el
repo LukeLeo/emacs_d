@@ -32,3 +32,16 @@
 (delete-selection-mode t)
 
 (provide 'init-better-defaults)
+
+;; 代码折叠
+(add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+
+
+;;MarkDown支持
+(autoload 'markdown-mode "markdown-mode.el"
+"Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '(".markdown" . markdown-mode) auto-mode-alist))
+;;文件保存时去掉行尾的空格
+(add-hook 'before-save-hook 'delete-trailing-whitespace)

@@ -18,34 +18,17 @@
 (require 'init-packages)
 (require 'init-ui)
 (require 'init-better-defaults)
-(require 'init-keybindings)
 (require 'init-org)
+(require 'init-keybindings)
 
 (setq custom-file (expand-file-name "luke/custom.el" user-emacs-directory))
 
 (load-file custom-file)
-
-;; 代码折叠
-(add-hook 'c-mode-common-hook 'hs-minor-mode)
-(global-set-key (kbd "<f6>") 'hs-toggle-hiding)
-
-
 (require 'nodejs-repl)
 
-(setq show-paren-style 'parentheses)
 
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-;;Set "filename@RuralMouse's Emacs" as title
-(setq frame-title-format "%b@Luke's Emacs")
 
-;;MarkDown支持
-(autoload 'markdown-mode "markdown-mode.el"
-"Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (cons '(".markdown" . markdown-mode) auto-mode-alist))
-;;文件保存时去掉行尾的空格
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; (require 'ggtags)
 ;; (add-hook 'c-mode-common-hook

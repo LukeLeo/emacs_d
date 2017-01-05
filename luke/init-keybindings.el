@@ -21,5 +21,16 @@
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
+(global-set-key (kbd "C-c p f") 'counsel-git)
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+;; 代码折叠
+(global-set-key (kbd "<f6>") 'hs-toggle-hiding)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+
 
 (provide 'init-keybindings)

@@ -1,45 +1,23 @@
 ﻿
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setenv "HOME" "I:/emacs/")
 
-(require 'cl)
-;;; Also use Melpa for most packages
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-						   ("popkit" . "https://elpa.popkit.org/packages/")
-						   ;; ("melpa" . "http://elpa.emacs-china.org/melpa/")))
-						   ("melpa" . "https://melpa.org/packages/")))
-  )
+(setq default-directory "~/")
+(add-to-list 'load-path "~/.emacs.d/luke/")
 
-(defvar luke/packages '(
-		       company
-		       monokai-theme
-		       hungry-delete
-		       swiper
-		       counsel
-		       ;;smartparents
-		       js2-mode
-		       nodejs-repl
-		       popwin
-		       ) "Default packages")
+(require 'init-packages)
 
-(setq package-selected-packages luke/packages)
+;; 滚动到顶部或底部时不发出提示音
+(setq ring-bell-function 'ignore)
 
-(defun luke/packages-installed-p()
-  (loop for pkg in luke/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally(return t)))
 
-(unless (luke/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-   (package-refresh-contents)
-   (dolist (pkg luke/packages)
-     (when (not (package-installed-p pkg))
-       (package-install pkg))))
 
-(require 'hungry-delete)
-(global-hungry-delete-mode)
 
 ;; 文件在外部被修改后重新加载
 (global-auto-revert-mode t)
@@ -52,11 +30,9 @@
 											))
 
 
-(require 'popwin)
-(popwin-mode 1)
 
-(setq default-directory "~/")
-(add-to-list 'load-path "~/.emacs.d/luke/")
+
+
 
 ;; org mode 设置
 (setq org-agenda-files '("~/org"))
@@ -66,11 +42,7 @@
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 (global-set-key (kbd "<f6>") 'hs-toggle-hiding)
 
-;; config for js files
-(setq auto-mode-alist
-	  (append
-	   '(("\\.js\\'" . js2-mode))
-	   auto-mode-alist))
+
 (require 'nodejs-repl)
 
 ;;去掉Emacs和gnus启动时的引导界面
@@ -114,12 +86,9 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 (global-set-key (kbd "<f2>") 'open-init-file)
-;; 成对输入括号、引号等
-(require 'smartparens-config)
-(smartparens-global-mode t)
 
-;;引入颜色主题
-(load-theme 'monokai t)
+
+
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
@@ -132,8 +101,7 @@
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-;; 开启全局Company 补全
-(global-company-mode t)
+
 
 (require 'lukefont)
 (init-lukefont)
@@ -146,9 +114,7 @@
 (setq display-time-use-mail-icon t);;时间栏旁边启用邮件设置
 (setq display-time-interval 10);;时间的变化频率，单位多少来着？
 
-;; swiper configure
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
+
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)

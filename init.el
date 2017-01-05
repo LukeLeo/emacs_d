@@ -40,6 +40,18 @@
 
 (require 'hungry-delete)
 (global-hungry-delete-mode)
+
+;; 文件在外部被修改后重新加载
+(global-auto-revert-mode t)
+
+;; 缩写补全模式与缩写列表
+(abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table '(
+											("8zl" "LukeLeo")
+											("1ml" "longlonglonglonglonglonglong")
+											))
+
+
 (require 'popwin)
 (popwin-mode 1)
 

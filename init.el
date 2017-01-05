@@ -1,26 +1,27 @@
+ï»¿
 (setenv "HOME" "I:/emacs/")
 
+(require 'cl)
 ;;; Also use Melpa for most packages
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
-;;  (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-;;						   ("melpa" . "https://melpa.org/packages/")
-  ;;						   ("elpy" . "https://jorgenschaefer.github.io/packages/")))
   (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "https://elpa.emacs-china.org/melpa/")))
+						   ("popkit" . "https://elpa.popkit.org/packages/")
+						   ;; ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+						   ("melpa" . "https://melpa.org/packages/")))
   )
 
-(require 'cl)
 (defvar luke/packages '(
 		       company
 		       monokai-theme
-			   hungry-delete
-			   swiper
-			   counsel
-			   smartparents
-			   js2-mode
-			   nodejs-repl
+		       hungry-delete
+		       swiper
+		       counsel
+		       ;;smartparents
+		       js2-mode
+		       nodejs-repl
+		       popwin
 		       ) "Default packages")
 
 (setq package-selected-packages luke/packages)
@@ -32,24 +33,26 @@
 
 (unless (luke/packages-installed-p)
   (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg luke/packages)
-    (when (not (package-installed-p pkg))
-      (package-initialize pkg))))
+   (package-refresh-contents)
+   (dolist (pkg luke/packages)
+     (when (not (package-installed-p pkg))
+       (package-install pkg))))
 
 (require 'hungry-delete)
 (global-hungry-delete-mode)
+(require 'popwin)
+(popwin-mode 1)
 
 (setq default-directory "~/")
-(add-to-list 'load-path "~/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/luke/")
 
-;; org mode ÉèÖÃ
+;; org mode è®¾ç½®
 (setq org-agenda-files '("~/org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-;; ´úÂëÕÛµş
+;; ä»£ç æŠ˜å 
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
-(global-set-key (kbd "<f3>") 'hs-toggle-hiding)
+(global-set-key (kbd "<f6>") 'hs-toggle-hiding)
 
 ;; config for js files
 (setq auto-mode-alist
@@ -58,9 +61,9 @@
 	   auto-mode-alist))
 (require 'nodejs-repl)
 
-;;È¥µôEmacsºÍgnusÆô¶¯Ê±µÄÒıµ¼½çÃæ
-;(setq inhibit-startup-message t)
-;(setq gnus-inhibit-startup-message t)
+;;å»æ‰Emacså’Œgnuså¯åŠ¨æ—¶çš„å¼•å¯¼ç•Œé¢
+;;(setq inhibit-startup-message t)
+;;(setq gnus-inhibit-startup-message t)
 (setq inhibit-splash-screen t)
 
 ;; show line numbers in all buffers
@@ -69,25 +72,26 @@
 ;; turn off scroll bar and toolbar
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;;½ûÓÃÄ¬ÈÏËõ½ø
+;;ç¦ç”¨é»˜è®¤ç¼©è¿›
 ;;(electric-indent-mode -1)
-;;¿ªÆô×î½ü´ò¿ªÎÄ¼şÄ£Ê½
+;;å¼€å¯æœ€è¿‘æ‰“å¼€æ–‡ä»¶æ¨¡å¼
 (require 'recentf)
 (recentf-mode t)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-;;ĞŞ¸Ä¹â±êÑùÊ½
+;;ä¿®æ”¹å…‰æ ‡æ ·å¼
 (setq-default cursor-type 'bar)
-;; ½ûÓÃ±¸·İÎÄ¼ş
+;; ç¦ç”¨å¤‡ä»½æ–‡ä»¶
 (setq make-backup-files nil)
-;; ÊäÈëÊ±É¾³ıÑ¡ÖĞ²¿·ÖµÄÎÄ×Ö£¬¶ø²»ÊÇ×·¼Ó
+(setq auto-save-default nil)
+;; è¾“å…¥æ—¶åˆ é™¤é€‰ä¸­éƒ¨åˆ†çš„æ–‡å­—ï¼Œè€Œä¸æ˜¯è¿½åŠ 
 (delete-selection-mode t)
-;; Æô¶¯È«ÆÁ
+;; å¯åŠ¨å…¨å±
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
-;;¸ßÁÁÏÔÊ¾³É¶ÔÀ¨ºÅ
+;;é«˜äº®æ˜¾ç¤ºæˆå¯¹æ‹¬å·
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
-;;¸ßÁÁ¹â±êËùÔÚĞĞ
+;;é«˜äº®å…‰æ ‡æ‰€åœ¨è¡Œ
 (global-hl-line-mode t)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -98,15 +102,12 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 (global-set-key (kbd "<f2>") 'open-init-file)
-;; ³É¶ÔÊäÈëÀ¨ºÅ¡¢ÒıºÅµÈ
+;; æˆå¯¹è¾“å…¥æ‹¬å·ã€å¼•å·ç­‰
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
-;;ÒıÈëÑÕÉ«Ö÷Ìâ
+;;å¼•å…¥é¢œè‰²ä¸»é¢˜
 (load-theme 'monokai t)
-;;(require 'color-theme)
-;;(color-theme-initialize)
-;;(color-theme-subtle-hacker)
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
@@ -119,19 +120,19 @@
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-;; ¿ªÆôÈ«¾ÖCompany ²¹È«
+;; å¼€å¯å…¨å±€Company è¡¥å…¨
 (global-company-mode t)
 
 (require 'lukefont)
 (init-lukefont)
 
-;;ÏÔÊ¾Ê±¼ä
+;;æ˜¾ç¤ºæ—¶é—´
 (display-time)
-(display-time-mode 1);;ÆôÓÃÊ±¼äÏÔÊ¾ÉèÖÃ£¬ÔÚminibufferÉÏÃæµÄÄÇ¸ö¸ÜÉÏ
-(setq display-time-24hr-format t);;Ê±¼äÊ¹ÓÃ24Ğ¡Ê±ÖÆ
-(setq display-time-day-and-date t);;Ê±¼äÏÔÊ¾°üÀ¨ÈÕÆÚºÍ¾ßÌåÊ±¼ä
-(setq display-time-use-mail-icon t);;Ê±¼äÀ¸ÅÔ±ßÆôÓÃÓÊ¼şÉèÖÃ
-(setq display-time-interval 10);;Ê±¼äµÄ±ä»¯ÆµÂÊ£¬µ¥Î»¶àÉÙÀ´×Å£¿
+(display-time-mode 1);;å¯ç”¨æ—¶é—´æ˜¾ç¤ºè®¾ç½®ï¼Œåœ¨minibufferä¸Šé¢çš„é‚£ä¸ªæ ä¸Š
+(setq display-time-24hr-format t);;æ—¶é—´ä½¿ç”¨24å°æ—¶åˆ¶
+(setq display-time-day-and-date t);;æ—¶é—´æ˜¾ç¤ºåŒ…æ‹¬æ—¥æœŸå’Œå…·ä½“æ—¶é—´
+(setq display-time-use-mail-icon t);;æ—¶é—´æ æ—è¾¹å¯ç”¨é‚®ä»¶è®¾ç½®
+(setq display-time-interval 10);;æ—¶é—´çš„å˜åŒ–é¢‘ç‡ï¼Œå•ä½å¤šå°‘æ¥ç€ï¼Ÿ
 
 ;; swiper configure
 (ivy-mode 1)
@@ -143,16 +144,13 @@
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 
-;;MarkDownÖ§³Ö
+;;MarkDownæ”¯æŒ
 (autoload 'markdown-mode "markdown-mode.el"
 "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
       (cons '(".markdown" . markdown-mode) auto-mode-alist))
-;;ÎÄ¼ş±£´æÊ±È¥µôĞĞÎ²µÄ¿Õ¸ñ
+;;æ–‡ä»¶ä¿å­˜æ—¶å»æ‰è¡Œå°¾çš„ç©ºæ ¼
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;;(require 'auto-complete-config)
-;;(ac-config-default)
 
 ;; (require 'ggtags)
 ;; (add-hook 'c-mode-common-hook
@@ -241,16 +239,23 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(company-idle-delay 0.08)
  '(company-minimum-prefix-length 1)
- '(custom-safe-themes
-   (quote
-	("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" default)))
+ '(compilation-message-face (quote default))
  '(inhibit-startup-screen t)
+ '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-	(nodejs-repl js2-mode smartparens counsel swiper hungry-delete monokai-theme python-mode markdown-mode helm-gtags ggtags elpy auto-complete)))
- '(tab-width 4))
+	(smartparens company monokai-theme hungry-delete swiper counsel js2-mode nodejs-repl)))
+ '(pos-tip-background-color "#A6E22E")
+ '(pos-tip-foreground-color "#272822")
+ '(tab-width 4)
+ '(vc-annotate-background nil)
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

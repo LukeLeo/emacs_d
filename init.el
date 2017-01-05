@@ -12,6 +12,7 @@
 (add-to-list 'load-path "~/.emacs.d/luke/")
 
 (require 'init-packages)
+(require 'init-ui)
 
 ;; 滚动到顶部或底部时不发出提示音
 (setq ring-bell-function 'ignore)
@@ -45,17 +46,12 @@
 
 (require 'nodejs-repl)
 
-;;去掉Emacs和gnus启动时的引导界面
-;;(setq inhibit-startup-message t)
-;;(setq gnus-inhibit-startup-message t)
-(setq inhibit-splash-screen t)
+
 
 ;; show line numbers in all buffers
 ;; run M-x global-linum-mode
 (global-linum-mode 1)
-;; turn off scroll bar and toolbar
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
+
 ;;禁用默认缩进
 ;;(electric-indent-mode -1)
 ;;开启最近打开文件模式
@@ -63,20 +59,17 @@
 (recentf-mode t)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-;;修改光标样式
-(setq-default cursor-type 'bar)
+
 ;; 禁用备份文件
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 ;; 输入时删除选中部分的文字，而不是追加
 (delete-selection-mode t)
-;; 启动全屏
-(setq initial-frame-alist (quote ((fullscreen . maximized))))
+
 ;;高亮显示成对括号
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
-;;高亮光标所在行
-(global-hl-line-mode t)
+
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;;Set "filename@RuralMouse's Emacs" as title

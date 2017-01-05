@@ -39,7 +39,7 @@
 (global-hungry-delete-mode)
 
 ;; 成对输入括号、引号等
-(require 'smartparens-config)
+;;(require 'smartparens-config)
 (smartparens-global-mode t)
 
 ;; swiper configure

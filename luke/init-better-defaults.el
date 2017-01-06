@@ -31,17 +31,36 @@
 ;; 输入时删除选中部分的文字，而不是追加
 (delete-selection-mode t)
 
-(provide 'init-better-defaults)
-
 ;; 代码折叠
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
-
-
 ;;MarkDown支持
 (autoload 'markdown-mode "markdown-mode.el"
-"Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
       (cons '(".markdown" . markdown-mode) auto-mode-alist))
 ;;文件保存时去掉行尾的空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(defun indent-buffer()
+  "Indent the currently visited buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun indent-region-or-buffer()
+  "Indent a region if selected, otherwise the whole buffer."
+  (interactive)
+  (save-excursion
+	(if (region-active-p)
+		(progn
+		  (indent-region (region-beginning) (region-end))
+		  (message "Indent selected region."))
+	  (progn
+		(indent-buffer)
+		(message "Indent buffer.")))))
+
+
+
+
+
+(provide 'init-better-defaults)

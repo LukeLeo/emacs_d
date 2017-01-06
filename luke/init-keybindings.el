@@ -30,7 +30,7 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-
+(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
 
 (provide 'init-keybindings)

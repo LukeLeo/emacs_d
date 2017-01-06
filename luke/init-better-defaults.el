@@ -74,8 +74,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; 递归删除和拷贝
-(setq dired-recursive-deletes)
-(setq dired-recursive-copies)
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
 
 ;; dired模式下禁止打开多个buffer
 (put 'dired-find-alternate-file 'disabled nil)

@@ -29,8 +29,12 @@
 (global-set-key (kbd "<f6>") 'hs-toggle-hiding)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
+;; 代码格式化
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+(global-set-key (kbd "M-/") 'hippie-expand)
 
+;; dired模式下禁止打开多个buffer
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
 (provide 'init-keybindings)

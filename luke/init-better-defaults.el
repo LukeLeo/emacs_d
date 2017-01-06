@@ -59,8 +59,31 @@
 		(indent-buffer)
 		(message "Indent buffer.")))))
 
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+										 try-expand-dabbrev-all-buffers
+										 try-expand-dabbrev-from-kill
+										 try-complete-file-name-partially
+										 try-complete-file-name
+										 try-expand-all-abbrevs
+										 try-expand-list
+										 try-expand-line
+										 try-complete-lisp-symbol-partially
+										 try-complete-lisp-symbol))
 
+;; 转换yes no 为 y n
+(fset 'yes-or-no-p 'y-or-n-p)
 
+;; 递归删除和拷贝
+(setq dired-recursive-deletes)
+(setq dired-recursive-copies)
+
+;; dired模式下禁止打开多个buffer
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; 允许通过C-x C-j打开当前文件的dired模式
+(require 'dired-x)
+;; 两个dired模式同时显示时进行文件拷贝
+(setq dired-dwim-target t)
 
 
 (provide 'init-better-defaults)

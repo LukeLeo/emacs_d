@@ -26,6 +26,13 @@
 (setq recentf-max-menu-items 25)
 
 ;;高亮显示成对括号
+(define-advice show-parent-function (:around (fn) fix-show-parent-function)
+  "Hilight enclosing parents."
+  (cond ((looking-at-p "\\s(") (funcall fn))
+		(t (save-excursion
+			 (ignore-errors (backward-up-list))
+			 (funcall fn)))))
+
 (show-paren-mode t)
 
 ;; 输入时删除选中部分的文字，而不是追加

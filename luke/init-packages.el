@@ -41,6 +41,9 @@
 ;; 成对输入括号、引号等
 ;;(require 'smartparens-config)
 (smartparens-global-mode t)
+;; 但在lisp mode下面单引号不进行补全
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+(sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
 
 ;; swiper configure
 (ivy-mode 1)

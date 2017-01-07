@@ -16,13 +16,13 @@
 ;;高亮光标所在行
 (global-hl-line-mode t)
 
-;;显示时间
-(display-time)
-(display-time-mode 1);;启用时间显示设置，在minibuffer上面的那个杠上
-(setq display-time-24hr-format t);;时间使用24小时制
-(setq display-time-day-and-date t);;时间显示包括日期和具体时间
-(setq display-time-use-mail-icon t);;时间栏旁边启用邮件设置
-(setq display-time-interval 10);;时间的变化频率，单位多少来着？
+;; ;;显示时间
+;; (display-time)
+;; (display-time-mode 1);;启用时间显示设置，在minibuffer上面的那个杠上
+;; (setq display-time-24hr-format t);;时间使用24小时制
+;; (setq display-time-day-and-date t);;时间显示包括日期和具体时间
+;; (setq display-time-use-mail-icon t);;时间栏旁边启用邮件设置
+;; (setq display-time-interval 10);;时间的变化频率，单位多少来着？
 
 (require 'lukefont)
 (init-lukefont)

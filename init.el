@@ -10,3 +10,4 @@
 (require 'org-install)
 (require 'ob-tangle)
 (org-babel-load-file (expand-file-name "lukeleo.org" user-emacs-directory))
+;;(put 'erase-buffer 'disabled nil)

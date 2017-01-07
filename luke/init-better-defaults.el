@@ -92,5 +92,6 @@
 ;; 两个dired模式同时显示时进行文件拷贝
 (setq dired-dwim-target t)
 
+(set-language-environment "UTF-8")
 
 (provide 'init-better-defaults)

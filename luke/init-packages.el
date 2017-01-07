@@ -4,9 +4,9 @@
   ;;(require 'package)
   ;;(package-initialize)
   (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-						   ("popkit" . "https://elpa.popkit.org/packages/")
+						   ("popkit" . "https://elpa.popkit.org/packages/")))
 						   ;; ("melpa" . "http://elpa.emacs-china.org/melpa/")))
-						   ("melpa" . "https://melpa.org/packages/")))
+						   ;;("melpa" . "https://melpa.org/packages/")))
   )
 
 (defvar luke/packages '(
@@ -19,6 +19,9 @@
 		       js2-mode
 		       nodejs-repl
 		       popwin
+			   expand-region
+			   iedit
+			   org-pomodoro
 		       ) "Default packages")
 
 (setq package-selected-packages luke/packages)
@@ -62,5 +65,7 @@
 
 (require 'popwin)
 (popwin-mode 1)
+
+(require 'org-pomodoro)
 
 (provide 'init-packages)

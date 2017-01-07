@@ -1,4 +1,5 @@
- (custom-set-variables
+
+(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -12,9 +13,12 @@
  '(compilation-message-face (quote default))
  '(inhibit-startup-screen t)
  '(magit-diff-use-overlays nil)
+ '(org-pomodoro-length 40)
  '(package-selected-packages
    (quote
-	(smartparens company monokai-theme hungry-delete swiper counsel js2-mode nodejs-repl)))
+	(org-pomodoro smartparens company monokai-theme hungry-delete swiper counsel js2-mode nodejs-repl)))
+ '(popwin:popup-window-position (quote right))
+ '(popwin:popup-window-width 40)
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(tab-width 4)

@@ -37,4 +37,10 @@
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
+;;(global-set-key (kbd "C-=") 'er/expand-region)
+
+(global-set-key (kbd "C-c r") 'org-capture)
+
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 (provide 'init-keybindings)

@@ -1,9 +1,9 @@
-** ³õÊ¼»¯ËùÓĞµÄpackages
+ï»¿** åˆå§‹åŒ–æ‰€æœ‰çš„packages
 #+BEGIN_SRC emacs-lisp
 (package-initialize)
 #+END_SRC
 
-** ÅäÖÃloadpath
+** é…ç½®loadpath
 #+BEGIN_SRC emacs-lisp
 (setq default-directory "~/")
 (add-to-list 'load-path "~/.emacs.d/luke/")

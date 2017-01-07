@@ -16,7 +16,7 @@
  '(org-pomodoro-length 40)
  '(package-selected-packages
    (quote
-	(org-pomodoro smartparens company monokai-theme hungry-delete swiper counsel js2-mode nodejs-repl)))
+	(helm-ag org-pomodoro smartparens company monokai-theme hungry-delete swiper counsel js2-mode nodejs-repl)))
  '(popwin:popup-window-position (quote right))
  '(popwin:popup-window-width 40)
  '(pos-tip-background-color "#A6E22E")

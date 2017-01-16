@@ -11,14 +11,18 @@
  '(company-idle-delay 0.08)
  '(company-minimum-prefix-length 1)
  '(compilation-message-face (quote default))
+ '(flycheck-clang-include-path
+   (quote
+	("/usr/local/include/opencv" "/usr/local/include/clang")))
+ '(flycheck-gcc-include-path (quote ("/usr/local/include/opencv")))
  '(inhibit-startup-screen t)
  '(magit-diff-use-overlays nil)
  '(org-pomodoro-length 40)
  '(package-selected-packages
    (quote
-	(helm-ag org-pomodoro smartparens company monokai-theme hungry-delete swiper counsel js2-mode nodejs-repl)))
+	(counsel-gtags cal-china-x mwe-log-commands 2048-game which-key evil-anzu goto-chg dix-evil undo-tree colemak-evil evil yasnippet flycheck helm-ag org-pomodoro smartparens company monokai-theme hungry-delete swiper counsel js2-mode nodejs-repl)))
  '(popwin:popup-window-position (quote right))
- '(popwin:popup-window-width 40)
+ '(popwin:popup-window-width 70)
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(tab-width 4)

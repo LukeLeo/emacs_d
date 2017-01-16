@@ -1,0 +1,1 @@
+(define-package "dix" "20170105.2223" "minor mode for editing Apertium XML dictionary files"  '((cl-lib "0.5") ) :url "https://github.com/unhammer/dix" :keywords '("languages" ))

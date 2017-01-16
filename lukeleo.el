@@ -1,6 +1,4 @@
 
-(package-initialize)
-
 (setq default-directory "~/")
 (add-to-list 'load-path "~/.emacs.d/luke/")
 

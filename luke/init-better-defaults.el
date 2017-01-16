@@ -92,6 +92,43 @@
 ;; 两个dired模式同时显示时进行文件拷贝
 (setq dired-dwim-target t)
 
-(set-language-environment "UTF-8")
+;;(set-language-environment "UTF-8")
+
+(setq c-default-style "linux"
+          c-basic-offset 4)
+
+(require 'cal-china-x)
+(setq mark-holidays-in-calendar t)
+
+(setq my-holidays
+    '(;;公历节日
+      (holiday-float 6 0 3 "父亲节")
+      ;; 农历节日
+      (holiday-lunar 1 1 "春节" 0)
+      (holiday-lunar 1 15 "元宵节" 0)
+      (holiday-solar-term "清明" "清明节")
+      (holiday-lunar 5 5 "端午节" 0)
+      (holiday-lunar 7 7 "七夕情人节" 0)
+      (holiday-lunar 8 15 "中秋节" 0)
+      ;;纪念日
+      (holiday-fixed 8 10 "儿子生日")
+      (holiday-fixed 7 23 "老婆生日")
+      (holiday-lunar 5 28 "老爸生日" 0)
+      (holiday-lunar 11 11 "我的生日" 0)
+))
+(setq calendar-holidays my-holidays)  ;只显示我定制的节假日
+
+;; org模式长文本自动换行
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+
+(auto-image-file-mode t);打开图片显示功能
+
+(setq counsel-gtags-suggested-key-mapping t)
+
+;;(setenv "PATH" (concat "C:/glo653wb/bin;" (getenv "PATH")))
+;;(setq exec-path (append exec-path '("C:/glo653wb/bin")))
+
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+
 
 (provide 'init-better-defaults)

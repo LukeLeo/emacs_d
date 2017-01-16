@@ -1,6 +1,4 @@
 ﻿* 工作安排
 
-** TODO [#B] 学习Spacemacs Rocks第二季第六天的视频
-   SCHEDULED: <2017-01-07 周六 22:30>
-   CLOCK: [2017-01-07 周六 22:59]
-   CLOCK: [2017-01-07 周六 22:56]
+** DONE [#B] 学习Spacemacs Rocks第二季第六天的视频
+   SCHEDULED: <2017-01-12 周四 9:30>

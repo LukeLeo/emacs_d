@@ -1,3 +1,4 @@
+
 (require 'cl)
 ;;; Also use Melpa for most packages
 (when (>= emacs-major-version 24)
@@ -23,6 +24,15 @@
 			   iedit
 			   org-pomodoro
 			   helm-ag
+			   flycheck
+			   yasnippet
+			   auto-yasnippet
+			   undo-tree
+			   goto-chg
+			   evil
+			   which-key
+			   mwe-log-commands
+			   window-numbering
 		       ) "Default packages")
 
 (setq package-selected-packages luke/packages)
@@ -69,4 +79,25 @@
 
 (require 'org-pomodoro)
 
+;;(global-flycheck-mode t)
+(add-hook 'c-mode-hook 'flycheck-mode)
+
+(require 'yasnippet)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+
+;;(evil-mode 1)
+
+(window-numbering-mode t)
+(which-key-mode 1)
+
+(require 'rect-mark)
+(autoload 'rm-set-mark "rect-mark"
+      "Set mark for rectangle." t)
+    (autoload 'rm-exchange-point-and-mark "rect-mark"
+      "Exchange point and mark for rectangle." t)
+    (autoload 'rm-kill-region "rect-mark"
+      "Kill a rectangular region and save it in the kill ring." t)
+    (autoload 'rm-kill-ring-save "rect-mark"
+      "Copy a rectangular region to the kill ring." t)
 (provide 'init-packages)

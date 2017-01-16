@@ -14,12 +14,12 @@
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
 
 ;; support for zoom with mouse wheel and Ctrl key
-;; For Linux
-;;(global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
-;;(global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
-;; For Windows
-(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+(if (eq system-type 'windows-nt)
+    (progn (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+	   (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)))
+(if (eq system-type 'gnu/linux)
+    (progn (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
+	   (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)))
 
 (global-set-key (kbd "C-c p f") 'counsel-git)
 
@@ -50,5 +50,22 @@
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 (global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
+
+;;(global-set-key (kbd "C-w") 'backward-kill-word)
+
+(global-set-key (kbd "C-x r C-s") 'rm-set-mark)
+(global-set-key (kbd "C-x r C-x") 'rm-exchange-point-and-mark)
+(global-set-key (kbd "C-x r C-w") 'rm-kill-region)
+(global-set-key (kbd "C-x r M-w") 'rm-kill-ring-save)
+
+
+(add-hook 'c-mode-hook 'counsel-gtags-mode)
+(add-hook 'c++-mode-hook 'counsel-gtags-mode)
+
+(with-eval-after-load 'counsel-gtags
+  (define-key counsel-gtags-mode-map (kbd "M-t") 'counsel-gtags-find-definition)
+  (define-key counsel-gtags-mode-map (kbd "M-r") 'counsel-gtags-find-reference)
+  (define-key counsel-gtags-mode-map (kbd "M-s") 'counsel-gtags-find-symbol)
+  (define-key counsel-gtags-mode-map (kbd "M-,") 'counsel-gtags-pop-stack))
 
 (provide 'init-keybindings)

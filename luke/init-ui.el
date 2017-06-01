@@ -1,3 +1,4 @@
+
 ;; turn off scroll bar and toolbar
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -24,9 +25,14 @@
 ;; (setq display-time-use-mail-icon t);;时间栏旁边启用邮件设置
 ;; (setq display-time-interval 10);;时间的变化频率，单位多少来着？
 
+;;(when window-system
+;;  (require 'lukefont)
+;;  (init-lukefont))
+
 (when window-system
-  (require 'lukefont)
-  (init-lukefont))
+  (require 'bhj-fonts))
+  ;;(init-lukefont))
+
 
 (setq show-paren-style 'parentheses)
 ;;Set "filename@RuralMouse's Emacs" as title

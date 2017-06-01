@@ -42,7 +42,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 (defun init-lukefont()
   (qiang-set-font
-   '("Consolas" "Monaco" "DejaVu Sans Mono" "Monospace" "Courier New") ":pixelsize=16"
+   '("Consolas" "Monaco" "DejaVu Sans Mono" "Monospace" "Courier New") ":size=16"
    '("Microsoft Yahei" "文泉驿等宽微米黑" "黑体" "新宋体" "宋体"))
   )
 

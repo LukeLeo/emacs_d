@@ -9,7 +9,7 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(company-idle-delay 0.08)
- '(company-minimum-prefix-length 1)
+ '(company-minimum-prefix-length 2)
  '(compilation-message-face (quote default))
  '(flycheck-clang-include-path
    (quote
